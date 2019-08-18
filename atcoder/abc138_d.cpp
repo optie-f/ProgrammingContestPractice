@@ -7,6 +7,8 @@ using namespace std;
 #define RREP0(i,n) for(int i=n-1; i>=0; --i)
 #define RREP1(i,n) for(int i=n; i>=1; --i)
 #define SORT(c) sort((c).begin(),(c).end())
+#define REVERSE(c) reverse((c).begin(),(c).end())
+#define FILL(c, v) fill((c).begin(),(c).end(), v)
 #define SZ(a) int((a).size())
 #define EXIST(s,e) ((s).find(e)!=(s).end())
 #define CLR(a) memset((a), 0 ,sizeof(a))
@@ -19,35 +21,26 @@ typedef long long LL;
 const int INTINF = 2147483647;
 const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
-vector<int> Tree[200001];
-vector<int> counter;
-
-
-void add_rec(int par, int val) {
-    counter[par] += val;
-    for (int cld : Tree[par]) {
-        add_rec(cld, val);
-    }
-}
 
 void solve() {
   int N, Q, a, b, p, x;
   cin >> N >> Q;
-  counter.reserve(N+1);
-  fill(counter.begin(), counter.end(), 0);
+  vector<int> counter; counter.reserve(N+1); FILL(counter, 0);
+  vector<int> parentOf; parentOf.reserve(N+1); FILL(parentOf, -1);
   REP0(i, N-1) {
       cin >> a >> b;
-      Tree[a].push_back(b);
-   }
+      parentOf[b] = a;
+  }
   REP0(i, Q) {
       cin >> p >> x;
-      add_rec(p,x);
+      counter[p] += x;
   }
-  REP1(i, N) {
-      cout << counter[i];
-      if (i != N) cout << ' ';
+  FOR(i, 2, N+1) {
+      counter[i] += counter[parentOf[i]];
   }
+  REP1(i, N) cout << counter[i] << ((i!=N)? " " : "");
   cout << endl;
+
 }
 
 int main(int argc, char const *argv[])
