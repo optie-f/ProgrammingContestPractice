@@ -25,7 +25,7 @@ LL gcd(LL a,LL b){return b?gcd(b,a%b):a;}
 void solve() {
   LL A, B, C, D; cin >> A >> B >> C >> D;
   LL lcm = (C * D) / gcd(C, D);
-  cout << (B-A) - (B-A)/C - (B-A)/D + (B-A)/lcm << endl;
+  cout << (B-A+1) - (B/C-(A-1)/C) - (B/D-(A-1)/D) + (B/lcm-(A-1)/lcm) << endl;
 }
 
 int main(int argc, char const *argv[])

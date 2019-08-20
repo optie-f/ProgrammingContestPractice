@@ -6,4 +6,4 @@ abc135_c: 貪欲. **`10^9` は `int` の外** \
 abc134_c: \
 abc133_c: `(a*b) % p = ((a % p)*(b % p)) % p`であり, 剰余の世界は p 未満の数しかない\
 abc132_c: \
-abc131_c: `gcd(a,b) * lcm(a,b) = a*b`
+abc131_c: `gcd(a,b) * lcm(a,b) = a*b` 苦手なタイプの境界条件 要注意
