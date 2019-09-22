@@ -24,30 +24,72 @@ const int INTINF = 2147483647;
 const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
 
-int M[10000][10000]; // max of [L][R]
-int X[10000][10000]; 
+// int M[10000][10000]; // max of [L][R]
+// int X[10000][10000]; 
 
-void solve() {
+// void solve() {
+//   int N; cin >> N;
+//   REP0(i, N){
+//     int p; cin >> p;
+//     X[i][i] = p;
+//     REP0(j, i+1) { // 0 ~ i-1 行 までの上△を埋める
+//       FOR(k, j+1, i+1) { // j 行目を k = j+1 - i まで
+//         if (k==j+1) {
+//           X[j][k] = min(X[j][k-1], X[j+1][k]);
+//           M[j][k] = max(X[j][k-1], X[j+1][k]);
+//           } else {
+//           if (M[j][k-1] <= X[k][k]) X[j][k] = M[j][k-1];
+//           else if ((M[j][k-1] > X[k][k]) and (X[k][k] >= X[j][k-1])) X[j][k] = X[k][k];
+//           else X[j][k] = X[j][k-1];
+//         } 
+//       }
+//     }
+//   }
+//   int ans=0;
+//   REP1(i, N) FOR(j, i+1, N+2) ans += X[i][j];
+//   cout << ans << endl;
+// }
+
+void solve()
+{
+  // multiset<int> S; // 0<=j < i   s.t. P_i < P_j 
+  // multiset<int> T; // i< j <=N+1 s.t. P_i < P_j
+  // X_LR=P_i となるのは
+  // ① w < L ≤ x < i ≤ R < y < z のときと
+  // ② w < x ≤ L < i < y ≤ R < z のときのみ
+  // つまり, P_iより大きい要素の添え字を範囲内にひとつ（x xor y）しか持たないときで
+  // ①のケース数は (x-w)*(y-i); L,r が w < L ≤ x, i ≤ R < y でそれぞれ自由に動く
+  // ②のケース数は (i-x)*(z-y) でカウントする
+  ULL ans = 0;
   int N; cin >> N;
-  REP0(i, N){
+
+  map<int, int> P_index;
+  REP1(i, N) {
     int p; cin >> p;
-    X[i][i] = p;
-    REP0(j, i+1) { // 0 ~ i-1 行 までの上△を埋める
-      FOR(k, j+1, i+1) { // j 行目を k = j+1 - i まで
-        if (k==j+1) {
-          X[j][k] = min(X[j][k-1], X[j+1][k]);
-          M[j][k] = max(X[j][k-1], X[j+1][k]);
-          } else {
-          if (M[j][k-1] <= X[k][k]) X[j][k] = M[j][k-1];
-          else if ((M[j][k-1] > X[k][k]) and (X[k][k] >= X[j][k-1])) X[j][k] = X[k][k];
-          else X[j][k] = X[j][k-1];
-        } 
-      }
-    }
+    P_index.insert(make_pair(p, i));
   }
-  int ans=0;
-  REP1(i, N-1) FOR(j, i, N) ans += X[i][j];
+  multiset<int> checked_ind;
+  checked_ind.insert(0); checked_ind.insert(0);
+  checked_ind.insert(N+1); checked_ind.insert(N+1);
+
+  decltype(checked_ind)::iterator ptr_x;
+  decltype(checked_ind)::iterator ptr_y;
+
+  RREP1(P_i, N){
+    int i = P_index.at(P_i);
+    ptr_y = checked_ind.upper_bound(i);
+    // lower_bound は条件を満たす *最初の要素* を指すので
+    // set に対して使うと最小値を取ってきてしまう
+    ptr_x = prev(ptr_y);
+    // int だとはみ出る
+    LL cnt = (*ptr_x - *prev(ptr_x)) * (*ptr_y - i);
+    cnt += (i - *ptr_x) * (*next(ptr_y) - *ptr_y);
+    ans += cnt * P_i;
+    checked_ind.insert(i);
+  }
+
   cout << ans << endl;
+
 }
 
 int main(int argc, char const *argv[])
