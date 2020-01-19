@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -23,9 +22,22 @@ typedef unsigned long long ULL;
 const int INTINF = 2147483647;
 const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
+LL point[1000001];
 
 void solve() {
-  
+    int N, Q;
+    LL K;
+    cin >> N >> K >> Q;
+    
+    REP0(i, Q) {
+        int tmp; cin >> tmp;
+        point[tmp]++;
+    }
+
+    REP1(i, N) {
+        cout << ((point[i] > Q-K) ? "Yes" : "No") << endl; 
+    }
+
 }
 
 int main(int argc, char const *argv[])
@@ -36,14 +48,3 @@ int main(int argc, char const *argv[])
   solve();
   return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)
