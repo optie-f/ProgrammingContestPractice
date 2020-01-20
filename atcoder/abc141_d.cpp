@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -24,9 +23,31 @@ const int INTINF = 2147483647;
 const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
 
-void solve()
+void solve() 
 {
-  
+  int N, M; cin >> N >> M;
+
+  priority_queue<LL> A;
+  LL ans = 0;
+
+  REP0(i, N)
+  {
+    LL tmp; cin >> tmp;
+    A.push(tmp);
+    ans += tmp;
+  }
+
+  REP0(i, M) 
+  {
+    LL top = A.top();
+    A.pop();
+    LL rem = top%2;
+    top /= 2ll;
+    A.push(top);
+    ans -= (top + rem);
+  }
+
+  cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -37,14 +58,3 @@ int main(int argc, char const *argv[])
   solve();
   return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)
