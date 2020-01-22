@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -21,12 +20,33 @@ typedef long long LL;
 typedef unsigned long long ULL;
 
 const int INTINF = 1e9;
-const LL LLINF = 1e18;
+const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
+
+int l[10];
+int N, A, B, C;
+
+int dfs(int i, int a, int b, int c)
+{
+    if (i == N) 
+    {
+        // 竹を伸縮させるコスト. ただしどれかを無から生成し始めるパタンは棄却し、
+        // 無の材料に合成したコストも引いておく
+        return ((a*b*c>0) ? abs(A-a) + abs(B-b) + abs(C-c) - 30 : (int)1e9);
+    }
+    int ptn0 = dfs(i+1, a, b, c); // i本目の竹を無視する
+    // 竹をa/b/cの材料へ合成する
+    int ptn1 = dfs(i+1, a + l[i], b, c) + 10;
+    int ptn2 = dfs(i+1, a, b + l[i], c) + 10;
+    int ptn3 = dfs(i+1, a, b, c + l[i]) + 10;
+    return min(min(ptn0, ptn1), min(ptn2, ptn3));
+}
 
 void solve()
 {
-
+  cin >> N >> A >> B >> C;
+  REP0(i, N) cin >> l[i];
+  cout << dfs(0, 0, 0, 0) << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -37,14 +57,3 @@ int main(int argc, char const *argv[])
     solve();
     return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)

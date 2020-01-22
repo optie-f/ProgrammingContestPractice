@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -20,13 +19,29 @@ template<class T> inline string toString(T x) {ostringstream sout;sout<<x;return
 typedef long long LL;
 typedef unsigned long long ULL;
 
-const int INTINF = 1e9;
-const LL LLINF = 1e18;
+const int INTINF = 2147483647;
+const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
+
+int dp[100001]; // 1-iに出現するAC数
 
 void solve()
 {
-
+  int N, Q; cin >> N >> Q;
+  char s_prev = '\0';
+  REP1(i, N)
+  {
+      char s; cin >> s;
+      dp[i] = dp[i-1];
+      if (s_prev=='A' and s=='C') dp[i]++;
+      s_prev = s;
+  }
+  
+  REP0(i, Q) {
+      int l, r; cin >> l >> r;
+      // 解説と添字が異なるが、こちらは "C" を基準にカウントしているため
+      cout << dp[r] - dp[l] << endl;
+  }
 }
 
 int main(int argc, char const *argv[])
@@ -37,14 +52,3 @@ int main(int argc, char const *argv[])
     solve();
     return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)

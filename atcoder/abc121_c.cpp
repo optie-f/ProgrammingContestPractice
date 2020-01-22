@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -20,13 +19,40 @@ template<class T> inline string toString(T x) {ostringstream sout;sout<<x;return
 typedef long long LL;
 typedef unsigned long long ULL;
 
-const int INTINF = 1e9;
-const LL LLINF = 1e18;
+const int INTINF = 2147483647;
+const LL LLINF = 9223372036854775807;
 int gcd(int a,int b){return b?gcd(b,a%b):a;}
 
 void solve()
 {
+  int N, M; cin >> N >> M;
+  LL ans = 0;
+  vector<pair<LL, int>> shops; shops.reserve(N);
+  REP0(i, N)
+  {
+      LL A; int B; cin >> A >> B;
+      pair<LL, int> shop = make_pair(A, B);
+      shops.push_back(shop);
+  }
 
+  auto sort_func = [](pair<LL, int> A, pair<LL, int> B){
+      return A.first < B.first;
+  };
+
+  sort(shops.begin(), shops.end(), sort_func);
+
+  for (auto shop : shops)
+  {
+     if (M == 0) break;
+     if (M >= shop.second) {
+         M -= shop.second;
+         ans += shop.second * shop.first;
+     } else {
+         ans += M * shop.first;
+         M = 0;
+     }
+  }
+  cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -37,14 +63,3 @@ int main(int argc, char const *argv[])
     solve();
     return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)

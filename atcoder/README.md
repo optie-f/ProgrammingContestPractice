@@ -21,4 +21,5 @@ abc131_c: `gcd(a,b) * lcm(a,b) = a*b` 苦手なタイプの境界条件 要注�
 abc130_c: 難しく考えすぎない \
 abc129_c: i番目の状態は有限の事前状態から求まるのでdp \
 abc125_c: gcd はどの順番で計算してもよい `gcd(X,Y,Z) = gcd(gcd(X,Y),Z) = gcd(X, gcd(Y,Z))` ため、左からのgcdと右からのgcdを計算しておけば、i番目を除外したgcdは log(min(a,b)) で求まる \
-abc124_c: stringに添字つけて取り出した文字は char. うっかり char で書かれた数字と int を比較しないように
+abc124_c: stringに添字つけて取り出した文字は char. うっかり char で書かれた数字と int を比較しないように \
+abc122_c: 1文字目からi番目までに出現する"AC"の数でdpをして、区間端で引く 

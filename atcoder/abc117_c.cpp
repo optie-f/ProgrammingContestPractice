@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -26,7 +25,21 @@ int gcd(int a,int b){return b?gcd(b,a%b):a;}
 
 void solve()
 {
+    int N, M; cin >> N >> M;
+    
+    vector<int> A; A.reserve(M);
+    REP0(i, M) { int a; cin >> a; A.push_back(a); }
+    SORT(A);
+    
+    vector<int> dist2next; dist2next.reserve(M);
+    REP0(i, M-1) dist2next.push_back( abs(A[i+1] - A[i]) ); 
+    
+    SORT(dist2next);
+    
+    int ans = 0;
+    REP0(i, M-N) ans += dist2next[i];
 
+    cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -37,14 +50,3 @@ int main(int argc, char const *argv[])
     solve();
     return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)
