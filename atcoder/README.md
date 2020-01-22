@@ -25,4 +25,5 @@ abc132_c: \
 abc132_c: WA 未 組み合わせ \
 abc131_c: `gcd(a,b) * lcm(a,b) = a*b` 苦手なタイプの境界条件 要注意 \
 abc130_c: 難しく考えすぎない \
-
+abc129_c: i番目の状態は有限の事前状態から求まるのでdp \
+abc125_c: gcd はどの順番で計算してもよい gcd(X,Y,Z) = gcd(gcd(X,Y),Z) = gcd(X, gcd(Y,Z)) ため、左からのgcdと右からのgcdを計算しておけば、i番目を除外したgcdは log(min(a,b)) で求まる \

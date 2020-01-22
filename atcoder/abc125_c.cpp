@@ -1,4 +1,3 @@
-template = """
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -22,11 +21,35 @@ typedef unsigned long long ULL;
 
 const int INTINF = 2147483647;
 const LL LLINF = 9223372036854775807;
-int gcd(int a,int b){return b?gcd(b,a%b):a;}
+LL gcd(LL a, LL b){return b?gcd(b,a%b):a;}
+
+LL A[100001];
+LL L_gcd[100001];
+LL R_gcd[100001];
 
 void solve()
 {
+  int N; cin >> N;
+  LL ans = 0;
   
+  REP1(i, N) 
+  { 
+      cin >> A[i];
+      L_gcd[i] = gcd(L_gcd[i-1], A[i-1]);
+  }
+
+  RREP1(i, N)
+  {
+      R_gcd[i] = gcd(R_gcd[i+1], A[i]);
+  }
+  
+  
+  REP1(i, N) 
+  { // A[i] を除外した場合における gcd
+    
+    ans = max(gcd(L_gcd[i], R_gcd[i+1]), ans);
+  }
+  cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -37,14 +60,3 @@ int main(int argc, char const *argv[])
     solve();
     return 0;
 }
-"""
-
-
-contest_name = input()
-suffices = 'abcdef'
-
-
-for suffix in suffices:
-    path = './{0}_{1}.cpp'.format(contest_name, suffix)
-    with open(path, mode='w') as f:
-        f.write(template)
