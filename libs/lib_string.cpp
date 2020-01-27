@@ -1,3 +1,6 @@
+#include <string>
+using namespace std;
+
 string last (string s, int n)
 {
     string result=""s;
