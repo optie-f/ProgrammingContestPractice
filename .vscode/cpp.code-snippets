@@ -1,0 +1,98 @@
+{
+  // Place your ProgrammingContestPractice workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "cin_int": {
+    "prefix": "cint",
+    "body": ["int $1; cin >> $1;"],
+    "description": "int型の受取"
+  },
+  "cin_ll": {
+    "prefix": "cinll",
+    "body": ["LL $1; cin >> $1;"],
+    "description": "ll型の受取"
+  },
+  "cin_vector_int": {
+    "prefix": "cvi",
+    "body": ["vector<int> $1($2);", "REP0(i, $2)", "{", "  cin >> $1[i];", "}"],
+    "description": "vector<int>の受取"
+  },
+  "cin_vector_ll": {
+    "prefix": "cvl",
+    "body": ["vector<LL> $1($2);", "REP0(i, $2)", "{", "  cin >> $1[i];", "}"],
+    "description": "vector<ll>の受取"
+  },
+  "cout": {
+    "prefix": "cout",
+    "body": ["cout << $1 << endl;"],
+    "description": "出力"
+  },
+  "sort": {
+    "prefix": "sort",
+    "body": ["sort($1.begin(), $1.end());"],
+    "description": "sort"
+  },
+  "reverse": {
+    "prefix": "rev",
+    "body": ["reverse($1.begin(), $1.end());"],
+    "description": "reverse"
+  },
+  "fill": {
+    "prefix": "fill",
+    "body": ["fill($1.begin(), $1.end());"],
+    "description": "fill"
+  },
+  "exist": {
+    "prefix": "exist",
+    "body": ["($1.find($2) != $1.end());"],
+    "description": "fill"
+  },
+  "rep0": {
+    "prefix": "rep0",
+    "body": ["REP0(i, $1)", "{", "  $2", "}"],
+    "description": "rep0"
+  },
+  "rep1": {
+    "prefix": "rep1",
+    "body": ["REP1(i, $1)", "{", "  $2", "}"],
+    "description": "rep1"
+  },
+  "FOR": {
+    "prefix": "FOR",
+    "body": ["FOR(i, $1, $2)", "{", "  $2", "}"],
+    "description": "FOR"
+  },
+  "vector": {
+    "prefix": "vec",
+    "body": ["vector<$1> $2"],
+    "description": "vector"
+  },
+  "pair": {
+    "prefix": "pair",
+    "body": ["pair<$1, $2> $3"],
+    "description": "pair"
+  },
+  "stack": {
+    "prefix": "stack",
+    "body": ["stack<$1> $2"],
+    "description": "stack"
+  },
+  "queue": {
+    "prefix": "queue",
+    "body": ["queue<$1> $2"],
+    "description": "queue"
+  }
+}
