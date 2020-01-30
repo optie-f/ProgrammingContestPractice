@@ -60,19 +60,19 @@
     "body": ["($1.find($2) != $1.end());"],
     "description": "fill"
   },
-  "rep0": {
-    "prefix": "rep0",
-    "body": ["REP0(i, $1)", "{", "  $2", "}"],
-    "description": "rep0"
+  "REP0": {
+    "prefix": "REP0",
+    "body": ["REP0($1, $2)", "{", "  $3", "}"],
+    "description": "REP0"
   },
-  "rep1": {
-    "prefix": "rep1",
-    "body": ["REP1(i, $1)", "{", "  $2", "}"],
-    "description": "rep1"
+  "REP1": {
+    "prefix": "REP1",
+    "body": ["REP1($1, $2)", "{", "  $3", "}"],
+    "description": "REP1"
   },
   "FOR": {
     "prefix": "FOR",
-    "body": ["FOR(i, $1, $2)", "{", "  $2", "}"],
+    "body": ["FOR($1, $2, $3)", "{", "  $4", "}"],
     "description": "FOR"
   },
   "vector": {
