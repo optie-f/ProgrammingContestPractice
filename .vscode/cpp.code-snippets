@@ -94,5 +94,15 @@
     "prefix": "queue",
     "body": ["queue<$1> $2"],
     "description": "queue"
+  },
+  "min3": {
+    "prefix": "min3",
+    "body": ["min(min($1, $2), $3)"],
+    "description": "min of 3"
+  },
+  "max3": {
+    "prefix": "max3",
+    "body": ["max(max($1, $2), $3)"],
+    "description": "max of 3"
   }
 }

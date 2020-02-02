@@ -1,0 +1,11 @@
+if [ $1 == "s" ]; then
+    probgram=$2
+    oj s "https://atcoder.jp/contests/${probgram:0:6}/tasks/${probgram:0:8}" ${probgram} -l 3003 -y --guess-cxx-latest --guess-cxx-compiler gcc -w 1
+else
+    probgram=$1
+    oj d "https://atcoder.jp/contests/${probgram:0:6}/tasks/${probgram:0:8}"
+    g++ -Wall -std=c++14 ./$1
+    oj test
+    rm -f a.out
+    rm -rf test
+fi
