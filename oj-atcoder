@@ -1,11 +1,13 @@
+program=$1
+contest_prob=( $(echo $program | tr -s '_.' '  ') )
+url="https://atcoder.jp/contests/${contest_prob[0]}/tasks/${contest_prob[0]}_${contest_prob[1]}"
+
 if [ $# -eq 2 ]; then
     if [ $2 = "s" ]; then
-        program=$1
-        oj s "https://atcoder.jp/contests/${program:0:6}/tasks/${program:0:8}" ${program} -l 3003 -y --guess-cxx-latest --guess-cxx-compiler gcc -w 1
+        oj s ${url} ${program} -l 3003 -y --guess-cxx-latest --guess-cxx-compiler gcc -w 1
     fi
 else
-    program=$1
-    oj d "https://atcoder.jp/contests/${program:0:6}/tasks/${program:0:8}"
+    oj d ${url}
     g++ -Wall -std=c++14 ./$1
     oj test
     rm -f a.out

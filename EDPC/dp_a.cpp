@@ -10,10 +10,25 @@ typedef pair<int, int> pii;
 
 const int INTINF = 1e9;
 const LL LLINF = 1e18;
-# define TENS(n) int(1e##n+n)
+const int dg5 = 1e5;
+int dp[dg5 + 1];
 
 void solve()
 {
+    int N;
+    cin >> N;
+    vector<int> h(N);
+    REP0(i, N)
+    {
+        cin >> h[i];
+        if (i == 0)
+            continue;
+        else if (i == 1)
+            dp[1] = abs(h[0] - h[1]);
+        else
+            dp[i] = min(dp[i - 1] + abs(h[i] - h[i - 1]), dp[i - 2] + abs(h[i] - h[i - 2]));
+    }
+    cout << dp[N - 1] << endl;
 }
 
 int main(int argc, char const *argv[])
