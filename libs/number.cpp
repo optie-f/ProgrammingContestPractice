@@ -1,5 +1,21 @@
 #include <cmath>
 
+long long llpow(long long a, long long b)
+{// a^b
+    if (b == 0)
+        return 1;
+
+    if (b % 2 == 0)
+    {
+        long long d = llpow(a, b / 2);
+        return (d * d);
+    }
+    else if (b % 2 == 1)
+    {
+        return (a * llpow(a, b - 1));
+    }
+}
+
 long long modpow(long long a, long long b, long long mod)
 {// a^b % mod を log(b) で計算する
     if (b == 0)

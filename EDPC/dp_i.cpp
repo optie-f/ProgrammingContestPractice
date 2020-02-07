@@ -10,10 +10,42 @@ typedef pair<int, int> pii;
 
 const int INTINF = 1e9;
 const LL LLINF = 1e18;
-# define TENS(n) int(1e##n+n)
+#define TENS(n) int(1e##n + n)
+
+// dp[i][j] : i番目までにj回表が出る
+double dp[3000][3000];
+// とおくと,
+// dp[i][j] = dp[i-1][j] + dp[i-1][j-1] * p_i
 
 void solve()
 {
+    int N;
+    cin >> N;
+    vector<double> p(N + 1);
+    REP1(i, N)
+    {
+        cin >> p[i];
+    }
+
+    dp[1][0] = (1 - p[1]);
+    dp[1][1] = p[1];
+
+    FOR(i, 2, N+1)
+    {
+        dp[i][0] = dp[i - 1][0] * (1 - p[i]);
+        dp[i][i] = dp[i - 1][i - 1] * p[i];
+        REP1(j, i-1)
+        {
+            dp[i][j] = dp[i - 1][j] * (1 - p[i]) + dp[i - 1][j - 1] * p[i];
+        }
+    }
+
+    double ans = 0;
+    FOR(i, N / 2 + 1, N + 1)
+    {
+        ans += dp[N][i];
+    }
+    cout << ans << endl;
 }
 
 int main(int argc, char const *argv[])
