@@ -10,10 +10,11 @@ typedef pair<int, int> pii;
 
 const int INTINF = 1e9;
 const LL LLINF = 1e18;
-#define pow10(n) int(1e##n+n)
+#define pow10(n) int(1e##n + n)
 
 void solve()
 {
+
 }
 
 int main(int argc, char const *argv[])
