@@ -37,7 +37,7 @@
   },
   "cout": {
     "prefix": "cout",
-    "body": ["cout << $1 << endl;"],
+    "body": ["cout << $0 << endl;"],
     "description": "出力"
   },
   "sort": {
