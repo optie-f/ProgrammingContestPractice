@@ -109,5 +109,10 @@
     "prefix": "max3",
     "body": ["max(max($1, $2), $3)"],
     "description": "max of 3"
+  },
+  "dxdy": {
+    "prefix": "dxdy",
+    "body": ["int dx[4] = {-1, 0, 1, 0};", "int dy[4] = {0, 1, 0, -1};"],
+    "description": "dxdy"
   }
 }
