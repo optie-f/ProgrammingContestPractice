@@ -15,8 +15,8 @@ using namespace std;
 typedef long long LL;
 typedef pair<int, int> pii;
 
-const int INTINF = 1e9;
-const LL LLINF = 1e18;
+const int INTINF = int(1e9)+1;
+const LL LLINF = LL(1e18)+1;
 #define pow10(n) int(1e##n + n)
 
 void solve()

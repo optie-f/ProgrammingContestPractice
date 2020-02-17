@@ -9,92 +9,71 @@ typedef long long LL;
 typedef pair<int, int> pii;
 
 const int INTINF = 1e9;
-const LL LLINF   = 1e18;
+const LL LLINF   = LL(1e18) + LL(1e17);
 #define pow10(n) int(1e##n + n)
 
 void solve()
 {
     int N;
     cin >> N;
-    int K;
+    LL K;
     cin >> K;
-    vector<LL> A_n, A_0, A_p;
+    vector<LL> A(N);
     REP0 (i, N)
-    {
-        LL a;
-        cin >> a;
-        if (a > 0)
-            A_p.push_back(a);
-        else if (a < 0)
-            A_n.push_back(-a);
-        else
-            A_0.push_back(a);
-    }
+        cin >> A[i];
+    sort(A.begin(), A.end());
 
-    sort(A_p.begin(), A_p.end());
-    sort(A_n.begin(), A_n.end());
-
-    int n_p = A_p.size();
-    int n_0 = A_0.size();
-    int n_n = A_n.size();
-
-    if (K <= n_p * n_n)
-    {
-        int ptr=0;
-        for (int i=n_n-1; i>=0; i--)
-        {
-            if (ptr + n_p<K)
-            {
-                ptr += n_p; continue;
+    // x -> 積が x 以下であるようなペアは K 未満であるかどうか
+    auto isok = [&](LL x) {
+        LL total = 0;
+        REP0 (i, N)
+        {  // A[i]とのペアのうち, 積がKを超えない最大の値を見つける
+            if (A[i] < 0)
+            {  // A[i] が負だと, 後ろから何番目かまでが条件を満たす
+                int ng = -1, ok = N;
+                while (abs(ng - ok) > 1)
+                {
+                    int c = (ng + ok) / 2;
+                    if (A[c] * A[i] < x)
+                        ok = c;
+                    else
+                        ng = c;
+                }
+                total += N - (ng + 1);
             }
             else
-            {
-                cout << A_n[i] * A_p[] << endl;
+            {  // A[i]が正ならば, 前から何番目かまでが条件を満たす
+                int ok = -1, ng = N;
+                while (abs(ng - ok) > 1)
+                {
+                    int c = (ng + ok) / 2;
+                    if (A[c] * A[i] < x)
+                        ok = c;
+                    else
+                        ng = c;
+                }
+                total += ok + 1;
             }
+            // この計算は重複をカウントしているので, あれば外す
+            if (A[i] * A[i] < x)
+                total--;
         }
-    }
-    else if (K <= n_p * n_n + n_0 * (n_0 - 1) / 2 + n_0 * (n_n + n_p))
-    {
-        cout << 0 << endl;
-        return;
-    }
-    else
-    {
-        int ptr = n_p * n_n + n_0 * (n_0 - 1) / 2 + n_0 * (n_n + n_p);
-        
-    }
-    
+        // 同じペアの逆もカウントしているので, それも外す
+        total /= 2;
+        return total < K;
+    };
 
-        LL ptr = 0;
+    LL ok = -LLINF, ng = LLINF;
 
-    REP0 (i, N - 1)
+    while (abs(ng - ok) > 1)
     {
-        if (ptr + N - (i + 1) < K)
-        {  // その段にK番目はない
-            ptr += N - (i + 1);
-            continue;
-        }
+        LL x = (ok + ng) / 2;
+        if (isok(x))
+            ok = x;
         else
-        {
-            if (A[i] == 0)
-            {
-                cout << 0 << endl;
-                return;
-            }
-            else if (A[i] > 0)
-            {
-                int delta = K - ptr;
-                cout << A[i] * A[i + delta] << endl;
-                return;
-            }
-            else
-            {
-                int delta = K - ptr;
-                cout << A[i] * A[N - delta] << endl;
-                return;
-            }
-        }
+            ng = x;
     }
+    cout << ok << endl;
 }
 
 int main(int argc, char const *argv[])
