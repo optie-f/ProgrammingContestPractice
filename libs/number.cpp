@@ -33,14 +33,14 @@ long long modpow(long long a, long long b, long long mod)
 }
 
 
-long long gcd(long long a, long long b)
+long long GCD(long long a, long long b)
 {
-    return b ? gcd(b, a % b) : a;
+    return b ? GCD(b, a % b) : a;
 }
 
-long long lcm(long long a, long long b)
+long long LCM(long long a, long long b)
 { // bracket to avoid overflow
-    return a * (b / gcd(a, b));
+    return a * (b / GCD(a, b));
 }
 
 bool is_prime(long long N)
