@@ -174,5 +174,15 @@
     "prefix": "dxdy",
     "body": ["int dx[4] = {-1, 0, 1, 0};", "int dy[4] = {0, 1, 0, -1};"],
     "description": "dxdy"
+  },
+  "pos": {
+    "prefix": "pos",
+    "body": ["struct pos", "{", "    int x;", "    int y;", "};"],
+    "description": "struct pos"
+  },
+  "mod1e9": {
+    "prefix": "mod1e9",
+    "body": "const LL  mod = 1e9 + 7;",
+    "description": "const LL mod = 1e9 + 7"
   }
 }

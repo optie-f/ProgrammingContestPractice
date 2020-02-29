@@ -140,7 +140,7 @@ template <class T> struct BiCoef
     }
 };
 
-const int mod = 1e9 + 7;
+const int mod = int(1e9) + 7;
 typedef intmod<mod> mint;
 typedef BiCoef<mint> BC;
 BC bc;
