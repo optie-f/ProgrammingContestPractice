@@ -37,6 +37,7 @@ graph: http://atcoder-scores.herokuapp.com/graph?user=optie
 - abc128_d: 多次元全探索のループの内側でも変数を書き換える場合コピーする必要がある
 - abc125_c: gcd はどの順番で計算してもよい`gcd(X,Y,Z) = gcd(gcd(X,Y),Z) = gcd(X, gcd(Y,Z))` ため、左からの gcd と右からの gcd を計算しておけば、i 番目を除外した gcd は log(min(a,b)) で求まる
 - abc124_c: string に添字つけて取り出した文字は char. うっかり char で書かれた数字と int を比較しないように
+- abc123_d: A_i + B_j + C_k が上位 K 個に入るためには、A と B だけ見たときに A_i + B_j が上位 K 個に入っていなければならないことを利用して、ソートにかける要素を絞る. また、独自構造体と比較関数による優先度付きキューは `priority_queue<elem, vector<elem>, decltype(comp)> PQ{comp};`
 - abc122_c: 1 文字目から i 番目までに出現する"AC"の数で dp をして、区間端で引く
 - abc111_c: 2 番目に大きい要素まで保持する場合、「max を超える要素を見た場合」だけでなく「max 以下 max_2 以上を見た場合」を忘れずに
 - abc108_c: int の自乗や三乗は範囲外になる. キャストするか、はじめから ll にしておく. また, N/(K/p) - N/K で, K で割って p 余る数は出る
