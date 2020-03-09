@@ -12,4 +12,5 @@ else
     oj test
     rm -f a.out
     rm -rf test
+    rm /Users/$USER/Library/Caches/online-judge-tools/download-history.jsonl
 fi
