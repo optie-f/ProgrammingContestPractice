@@ -1,5 +1,5 @@
 #include <vector>
-// インデックスで管理するものと思う
+// 頂点をインデックスで管理する
 struct UnionFind
 {
     std::vector<int> rank, p, cnt;
@@ -20,9 +20,9 @@ struct UnionFind
 
     void makeSet(int x)
     {
-        p[x]    = x;
+        p[x] = x;
         rank[x] = 0;
-        cnt[x]  = 1;
+        cnt[x] = 1;
     }
 
     bool same(int x, int y)

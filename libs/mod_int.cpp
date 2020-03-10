@@ -74,3 +74,5 @@ struct intmod
         return t;
     }
 };
+const int mod = int(1e9) + 7;
+typedef intmod<mod> mint;
