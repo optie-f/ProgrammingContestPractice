@@ -2,7 +2,7 @@ problemname = $1
 url = "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=${problemname:0:-4}"
 
 oj dl ${url}
-g++ -Wall -std=c++14 ./$1
+g++ -Wall -I /usr/local/Cellar/boost/1.72.0/include/ -std=c++14 ./$1
 oj test
 rm -f a.out
 rm -rf test 

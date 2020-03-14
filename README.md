@@ -7,6 +7,14 @@ graph: http://atcoder-scores.herokuapp.com/graph?user=optie
 
 ## abc memo
 
+- panasonic_b: 制約の下方のコーナーケースに注意
+- panasonic_c:
+  - boost::multiprecision を使う
+  - long double を使い, =を<と判定されないようにepsを足して`sqrt(a) + aqrt(b) + eps < sqrt(c)` とする
+  - 整数化
+    - `sqrt(a) + sqrt(b) < sqrt(c) `
+    - <=> `a+b+2*sqrt(a*b) < c` 
+    - <=> `4*a*b < (c-a-b)^2` かつ `c-a-b>0`  
 - abc158_e: 10 進数の数は各桁を 10 べきの係数とみなすことで和で表現できる。それを割ったあまりは各 10 べき項の割ったあまりの和から考えられる。あとは累積和を考える。累積和の差分で区間を考えるとき、最小元を含む区間の表現は片方が配列外でないといけない（1-origin で a_k - a_0）ので、小さい方の値として 0 を含めておく必要がある
 - abc157_c: 0 は一桁の整数に含まれる
 - abc157_d: UnionFind で連結成分の要素数をカウントできる

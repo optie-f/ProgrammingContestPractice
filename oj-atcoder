@@ -8,7 +8,7 @@ if [ $# -eq 2 ]; then
     fi
 else
     oj d ${url}
-    g++ -Wall -std=c++14 ./$1
+    g++ -Wall -I /usr/local/Cellar/boost/1.72.0/include/ -std=c++14 ./$1
     oj test
     rm -f a.out
     rm -rf test
