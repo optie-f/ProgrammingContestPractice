@@ -181,8 +181,8 @@
     "description": "struct pos"
   },
   "mod1e9": {
-    "prefix": "mod1e9",
-    "body": "const LL  mod = 1e9 + 7;",
+    "prefix": "mod",
+    "body": "const LL  mod = LL(1e9) + 7;",
     "description": "const LL mod = 1e9 + 7"
   },
   "WarshallFloyd": {
@@ -291,7 +291,7 @@
     ],
     "description": "mod int"
   },
-  "UnionFind" : {
+  "UnionFind": {
     "prefix": "union",
     "body": [
       "struct UnionFind",
@@ -359,11 +359,11 @@
       "    {",
       "        return cnt[findSet(x)];",
       "    }",
-      "};",
-      ],
-      "description": "union find"
+      "};"
+    ],
+    "description": "union find"
   },
-  "segtree" : {
+  "segtree": {
     "prefix": "seg",
     "body": [
       "template <typename Monoid> struct SegTree",
@@ -410,13 +410,14 @@
       "            return f(vl, vr);",
       "        }",
       "    }",
-      "};",
-      ],
-      "description": "ordinary segment tree. Monoid は演算が定義される集合(intやbitsetなど)"
+      "};"
+    ],
+    "description": "ordinary segment tree. Monoid は演算が定義される集合(intやbitsetなど)"
   },
-  "combination":{
+  "combination": {
     "prefix": "comb",
-    "body": ["template <int MOD> struct intmod",
+    "body": [
+      "template <int MOD> struct intmod",
       "{  // modified from http://drken1215.hatenablog.com/entry/2020/02/09/225000",
       "    long long val;",
       "    constexpr intmod(long long v = 0) noexcept : val(v % MOD)",
@@ -562,7 +563,15 @@
       "typedef intmod<mod> mint;",
       "typedef BiCoef<mint> BC;",
       "BC bc;"
-      ],
-      "description": "modint-based combination. bc.init(N) してから bc.com(a,b)"
+    ],
+    "description": "modint-based combination. bc.init(N) してから bc.com(a,b)"
+  },
+  "multi_precision": {
+    "prefix": "mp",
+    "body": [
+      "#include <boost/multiprecision/cpp_dec_float.hpp>",
+      "namespace mp = boost::multiprecision;"
+    ],
+    "description": "多倍長整数"
   }
 }
