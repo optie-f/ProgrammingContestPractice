@@ -6,7 +6,8 @@ problems: https://kenkoooo.com/atcoder/#/user/optie
 graph: http://atcoder-scores.herokuapp.com/graph?user=optie
 
 ## abc memo
-
+- abc159_b: **変数の再代入に気をつける**
+- abc159_e: 縦にだけ切るのだったら貪欲的に「Kを超えないギリギリで切る」ので正解にたどり着ける. 縦幅の制約が小さいので、それぞれの隙間で横に切るかどうかでbit全探索. 小さい制約を見たらbit全探索を考えるのは有効か. 入力が数字の列であって空白区切りでない形だった場合、そのままループを回して受け取ってもだめなので、char で受け取るなどする. 
 - panasonic_b: 制約の下方のコーナーケースに注意
 - panasonic_c:
   - boost::multiprecision を使う
