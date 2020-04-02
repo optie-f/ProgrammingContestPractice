@@ -5,12 +5,12 @@ url="https://atcoder.jp/contests/${contest_prob[0]}/tasks/${contest_prob[0]}_${c
 if [ $# -eq 2 ]; then
     if [ $2 = "s" ]; then
         oj s ${url} ${program} -l 3003 -y --guess-cxx-latest --guess-cxx-compiler gcc -w 1
+        rm /Users/$USER/Library/Caches/online-judge-tools/download-history.jsonl
     fi
-else
+elif [ $# -eq 1 ]; then 
     oj d ${url}
     g++ -Wall -I /usr/local/Cellar/boost/1.72.0/include/ -std=c++14 ./$1
     oj test
     rm -f a.out
     rm -rf test
-    rm /Users/$USER/Library/Caches/online-judge-tools/download-history.jsonl
 fi

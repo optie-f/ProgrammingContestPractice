@@ -26,10 +26,8 @@ long long modpow(long long a, long long b, long long mod)
         long long d = modpow(a, b / 2, mod) % mod;
         return (d * d) % mod;
     }
-    else if (b % 2 == 1)
-    {
+
         return (a * modpow(a, b - 1, mod)) % mod;
-    }
 }
 
 

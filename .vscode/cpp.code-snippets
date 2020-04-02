@@ -112,7 +112,7 @@
   },
   "find": {
     "prefix": "find",
-    "body": ["($1.find($2) != $1.end());"],
+    "body": ["$1.find($2) != $1.end()"],
     "description": "find"
   },
   "REP0": {
@@ -120,6 +120,12 @@
     "body": ["REP0($1, $2)", "{", "    $0", "}"],
     "description": "REP0"
   },
+  "RREP0": {
+    "prefix": "RREP0",
+    "body": ["RREP0($1, $2)", "{", "    $0", "}"],
+    "description": "RREP0"
+  },
+  
   "REP1": {
     "prefix": "REP1",
     "body": ["REP1($1, $2)", "{", "    $0", "}"],
