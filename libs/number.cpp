@@ -1,7 +1,7 @@
 #include <cmath>
 
 long long llpow(long long a, long long b)
-{// a^b
+{  // a^b
     if (b == 0)
         return 1;
 
@@ -17,7 +17,7 @@ long long llpow(long long a, long long b)
 }
 
 long long modpow(long long a, long long b, long long mod)
-{// a^b % mod を log(b) で計算する
+{  // a^b % mod を log(b) で計算する
     if (b == 0)
         return 1;
 
@@ -27,9 +27,8 @@ long long modpow(long long a, long long b, long long mod)
         return (d * d) % mod;
     }
 
-        return (a * modpow(a, b - 1, mod)) % mod;
+    return (a * modpow(a, b - 1, mod)) % mod;
 }
-
 
 long long GCD(long long a, long long b)
 {
@@ -37,7 +36,7 @@ long long GCD(long long a, long long b)
 }
 
 long long LCM(long long a, long long b)
-{ // bracket to avoid overflow
+{  // bracket to avoid overflow
     return a * (b / GCD(a, b));
 }
 
@@ -47,10 +46,9 @@ bool is_prime(long long N)
         return false;
     if (N == 2)
         return true;
-    long long ub = std::sqrt(N);
-    if (ub * ub == N)
+    if (N % 2 == 0)
         return false;
-    for (long long i = 3; i <= ub; i += 2)
+    for (long long i = 3; i * i <= N; i += 2)
     {
         if (N % i == 0)
             return false;
