@@ -82,12 +82,12 @@
   },
   "cout": {
     "prefix": "cout",
-    "body": ["cout << $0;"],
+    "body": ["std::cout << $0;"],
     "description": "出力"
   },
   "cout_endl": {
     "prefix": "coutend",
-    "body": ["cout << $0 << endl;"],
+    "body": ["std::cout << $0 << endl;"],
     "description": "出力"
   },
   "sort": {
@@ -125,7 +125,7 @@
     "body": ["RREP0($1, $2)", "{", "    $0", "}"],
     "description": "RREP0"
   },
-  
+
   "REP1": {
     "prefix": "REP1",
     "body": ["REP1($1, $2)", "{", "    $0", "}"],
@@ -176,10 +176,23 @@
     "body": ["max(max($1, $2), $3)"],
     "description": "max of 3"
   },
-  "dxdy": {
-    "prefix": "dxdy",
+  "mid3": {
+    "prefix": "mid3",
+    "body": ["max(min($1,$2), min(max($1,$2),$3))"],
+    "description": "median of 3"
+  },
+  "dxdy4": {
+    "prefix": "dxdy4",
     "body": ["int dx[4] = {-1, 0, 1, 0};", "int dy[4] = {0, 1, 0, -1};"],
-    "description": "dxdy"
+    "description": "dxdy4"
+  },
+  "dxdy8": {
+    "prefix": "dxdy8",
+    "body": [
+      "int dx[4] = {-1, -1, 0, 1, 1, 1, 0, -1};",
+      "int dy[4] = {0, 1, 1, 1, 0, -1, -1, -1};"
+    ],
+    "description": "dxdy4"
   },
   "pos": {
     "prefix": "pos",
