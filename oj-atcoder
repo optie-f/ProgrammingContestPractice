@@ -9,7 +9,7 @@ if [ $# -eq 2 ]; then
     fi
 elif [ $# -eq 1 ]; then 
     oj d ${url}
-    g++ -Wall -I /usr/local/Cellar/boost/1.72.0/include/ -std=c++14 ./$1
+    g++ -Wall -I /usr/local/Cellar/boost/1.72.0/include/ -std=gnu++17 ./$1
     oj test
     rm -f a.out
     rm -rf test

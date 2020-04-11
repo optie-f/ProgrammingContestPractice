@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 
-
 namespace geo
 {
 using Real = double;
