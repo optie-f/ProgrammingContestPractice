@@ -156,6 +156,11 @@
     "body": ["pair<$1, $2> $3"],
     "description": "pair"
   },
+  "map": {
+    "prefix": "map",
+    "body": ["map<$1, $2> $3"],
+    "description": "map"
+  },
   "stack": {
     "prefix": "sta",
     "body": ["stack<$1> $2"],
