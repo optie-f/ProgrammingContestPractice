@@ -19,6 +19,7 @@ graph: http://atcoder-scores.herokuapp.com/graph?user=optie
     - <=> `4*a*b < (c-a-b)^2` かつ `c-a-b>0`
 - nikkei2019_qual_c:C - Different Strokes. 得点差を最大化するように交互に料理を食べていく. まず「自分-相手」という考えにくい変数ではなくて、どちらかの得点のminmaxゲームとして考え直す. 最初に一方がすべての料理を食べた状態から増やして(減らして)いくことを考えるとシンプルになることがある.
 - caddi2018.D. Harlequin: ゲーム. 「どのような状態にまとめられるか」、「先手と後手がとることになる状態とは何か」を考える.
+- apc001_c: インタラクティブ問. string の受け取りをサボって char で先頭だけ受け取ったりしてるとTLEする（なぜ？）
 - code-festival-2017-qualc_C: 回文判定には, 左端と右端のポインタを進めていくのが一手
 - code-festival-2017-quala_C: C - Palindromic Matrix. HとWの偶奇で場合分して、分布がどうなっていればよいかを考える.
 
