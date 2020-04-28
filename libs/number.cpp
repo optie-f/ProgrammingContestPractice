@@ -10,10 +10,8 @@ long long llpow(long long a, long long b)
         long long d = llpow(a, b / 2);
         return (d * d);
     }
-    else if (b % 2 == 1)
-    {
-        return (a * llpow(a, b - 1));
-    }
+
+    return (a * llpow(a, b - 1));
 }
 
 long long modpow(long long a, long long b, long long mod)
