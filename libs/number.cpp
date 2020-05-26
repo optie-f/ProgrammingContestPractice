@@ -1,17 +1,17 @@
 #include <cmath>
 
-long long llpow(long long a, long long b)
+template <typename number> number numpow(number a, long long b)
 {  // a^b
     if (b == 0)
         return 1;
 
     if (b % 2 == 0)
     {
-        long long d = llpow(a, b / 2);
+        number d = numpow(a, b / 2);
         return (d * d);
     }
 
-    return (a * llpow(a, b - 1));
+    return (a * numpow(a, b - 1));
 }
 
 long long modpow(long long a, long long b, long long mod)
